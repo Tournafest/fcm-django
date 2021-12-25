@@ -13,6 +13,10 @@ FCM_DJANGO_SETTINGS.setdefault("UPDATE_ON_DUPLICATE_REG_ID", False)
 # User model
 FCM_DJANGO_SETTINGS.setdefault("USER_MODEL", settings.AUTH_USER_MODEL)
 
+# Post FCM Save Function
+# Input params: original_object, updated_object
+FCM_DJANGO_SETTINGS.setdefault("FCM_POST_SAVE_FUNCTION", "")
+
 FCM_DJANGO_SETTINGS.setdefault(
     "ERRORS",
     {
