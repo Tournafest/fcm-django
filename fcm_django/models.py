@@ -262,6 +262,17 @@ class FCMDeviceQuerySet(models.query.QuerySet):
             ),
         )
 
+    # NOTE: We are overriding update to run save on each device
+    # -> to enforce run of signals
+    def update(self, **kwargs):
+        """
+        Updates the devices in the queryset with the given kwargs.
+        """
+        for device in self:
+            for key, value in kwargs.items():
+                setattr(device, key, value)
+            device.save()
+
 
 FCMDeviceManager = _FCMDeviceManager.from_queryset(FCMDeviceQuerySet)
 
